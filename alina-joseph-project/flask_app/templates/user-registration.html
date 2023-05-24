@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- main content  -->
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+
+    .register {
+
+        background: #ffffff;
+        padding: 50px 100px;
+        border: 2px solid black;
+        box-shadow: 15px 15px 1px #95a4ff, 15px 15px 1px 2px black;
+    }
+
+    .register input {
+        display: block;
+        width: 100%;
+        font-size: 14pt;
+        line-height: 28pt;
+        font-family: "Fjalla One";
+        margin-bottom: 28pt;
+        border: none;
+        border-bottom: 5px solid black;
+        background: #ffffff;
+        min-width: 250px;
+        padding-left: 5px;
+        outline: none;
+        color: black;
+    }
+
+    .register input:focus {
+        border-bottom: 5px solid #95a4ff;
+    }
+
+    .register button {
+        display: block;
+        margin: 0 auto;
+        line-height: 28pt;
+        padding: 0 20px;
+        background: #ffffff;
+        letter-spacing: 2px;
+        transition: 0.2s all ease-in-out;
+        outline: none;
+        border: 1px solid black;
+        box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px black;
+    }
+
+    .register button:hover {
+        background: black;
+        color: white;
+        border: 1px solid black;
+    }
+
+    ::selection {
+        background: #ffc8ff;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        border-bottom: 5px solid #95a4ff;
+        -webkit-text-fill-color: #2A293E;
+        -webkit-box-shadow: 0 0 0px 1000px #f8f8e5f7 inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+</style>
+
+<div class="container pt-4">
+    <div class="register">
+        <form action="/register-user" method="post">
+            {% with errors = get_flashed_messages(category_filter=['register']) %}
+            {% if errors %}
+            <div class="alert alert-danger">
+                <h5> Oops! Looks like something went wrong: </h5>
+                <ul class="list-unstyled">
+                    {% for error_message in errors %}
+                    <li>{{ error_message }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+            <input name="first_name" placeholder="First Name" type="text" />
+            <input name="last_name" placeholder="Last Name" type="text" />
+            <input name="age" placeholder="Age" type="text" />
+            <input name="email" placeholder="Email" type="text" />
+            <input name="password" placeholder="Password" type="password" />
+            <input name="confirm" placeholder="Verify Password" type="password" />
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- main content top -->
+<style>
+    .check-list {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    .check-list li {
+        position: relative;
+        list-style-type: none;
+        padding-left: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .check-list li:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        width: 5px;
+        height: 11px;
+        border-width: 0 2px 2px 0;
+        border-style: solid;
+        border-color: #00a8a8;
+        transform-origin: bottom left;
+        transform: rotate(45deg);
+    }
+
+
+    /* Boilerplate stuff */
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+
+    section {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    
+
+    .main-2 {
+        font-family: "Fjalla One";
+        background-color: white;
+    }
+
+    .main-top {
+        font-family: "Fjalla One";
+    }
+
+
+
+
+    .carousel-wrapper {
+        width: 520px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+        border-radius: 20px;
+    }
+
+    .carousel-container {
+        width: 400px;
+        height: 250px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .carousel {
+        display: flex;
+        width: 1200px;
+        animation: sliding 12s infinite;
+    }
+
+    .carousel div {
+        width: 400px;
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .carousel:hover {
+        animation-play-state: paused;
+    }
+
+    .carousel .image-one {
+        background-image: url("https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2265&q=80");
+    }
+
+    .carousel .image-two {
+        background-image: url("https://images.unsplash.com/photo-1629380107895-bb31e18bdc64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80");
+    }
+
+    .carousel .image-three {
+        background-image: url("https://images.unsplash.com/photo-1629380108660-bd39c778a721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80");
+    }
+
+    @keyframes sliding {
+        30% {
+            transform: translateX(0);
+        }
+
+        35% {
+            transform: translateX(-400px);
+        }
+
+        65% {
+            transform: translateX(-400px);
+        }
+
+        70% {
+            transform: translateX(-800px);
+        }
+
+        98% {
+            transform: translateX(-800px);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .carousel-wrapper {
+            width: 312px;
+            height: 210px;
+        }
+
+        .carousel-container {
+            width: 240px;
+            height: 150px;
+        }
+
+        .carousel {
+            width: 720px;
+        }
+
+        .carousel>div {
+            width: 240px;
+            height: 150px;
+        }
+
+        @keyframes sliding {
+            30% {
+                transform: translateX(0);
+            }
+
+            35% {
+                transform: translateX(-240px);
+            }
+
+            65% {
+                transform: translateX(-240px);
+            }
+
+            70% {
+                transform: translateX(-480px);
+            }
+
+            98% {
+                transform: translateX(-480px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    }
+
+
+    .button1 {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.75em 1em;
+        color: #95a4ff;
+        border: 0.15em solid #95a4ff;
+        border-radius: calc(0.75em + 0.5em + 0.15em);
+        transition: 4s;
+    }
+
+    .button1:before,
+    .button1:after {
+        content: "";
+        position: absolute;
+        top: -1.5em;
+        z-index: -1;
+        width: 200%;
+        aspect-ratio: 1;
+        border: none;
+        border-radius: 40%;
+        background-color: rgba(0, 0, 255, 0.25);
+        transition: 4s;
+    }
+
+    .button1:before {
+        left: -80%;
+        transform: translate3d(0, 5em, 0) rotate(-340deg);
+    }
+
+    .button1:after {
+        right: -80%;
+        transform: translate3d(0, 5em, 0) rotate(390deg);
+    }
+
+    .button1:hover,
+    .button1:focus {
+        color: white;
+    }
+
+    .button1:hover:before,
+    .button1:hover:after,
+    .button1:focus:before,
+    .button1:focus:after {
+        transform: none;
+        background-color: #95a4ff(0, 0, 255, 0.75);
+    }
+</style>
+
+<div class="container">
+    <div class="main-top p-3">
+        <h2><em>{{user.first_name}}'s Skin Profile</em> </h2>
+    </div>
+    <div class="main d-flex">
+        <div class="main-1 mt-3">
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="image-one"></div>
+                        <div class="image-two"></div>
+                        <div class="image-three"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <section>
+            <div class="main-2">
+                <hr>
+                <h2>Your skin concerns are:</h2>
+                {% if concern.user_id == user_id : %}
+                <ul class="check-list">
+                    <li>{{ concern.type }}</li>
+                </ul>
+                <h3>About {{concern.type }} skin:</h3>
+                {% if concern.type == "Oily" %}
+                <p>Although oily skin can clog pores and lead to increased acne breakouts, oily skin also has many
+                    benefits. Oil helps preserve the skin, and people with oily skin tend to have thicker skin and fewer
+                    wrinkles. The key is to strike a balance between having too much oil and maintaining your skin’s
+                    natural moisture.
+                <h5><em> -American Academy of Dermatology Association</em></h5>
+                </p>
+                {% endif%}
+                {% if concern.type == "Combination" %}
+                <p> It’s a good idea to think conservatively when figuring out your skin
+                    care routine for combination skin.
+                    Go for gentle products that can moisturize dry areas without creating more oiliness, and only apply
+                    treatments to the needed areas for specific issues.</p>
+                <h5><em> -Healthline</em> </h5>
+                {% endif %}
+                {% if concern.type == "Normal" %}
+                <p> Normal skin may mostly come down to genetics. Just like your eye and hair color, you’re born with
+                    certain genes that influence your skin type.
+                    However, hormone levels, stress, too much sun exposure, and certain products can upset the skin’s
+                    balance, ultimately leading to a change in skin type.
+                    “A normal skin type is defined as not excessively oily or dry. It has no presenting conditions,”
+                    explains Spirithoula Koukoufikis, senior medical aesthetician at Skinfluencer London. “It’s overtly
+                    healthy and the sebum and moisture balance of the skin are well-balanced.”
+                </p>
+                <h5><em> -Healthline</em> </h5>
+                {% endif %}
+                {% if concern.type == "Dry" %}
+                <p> If you have dry skin try avoiding these ingredients:
+                <ul>
+                    <li> Alcohol (except for hand sanitizer)Alpha-hydroxy acid (AHA) </li>
+                    <li> Fragrance, including deodorant soaps</li>
+                    <li> Retinoids</li>
+                    <li> Avoiding these products will help your skin retain its natural oils.</li>
+                </ul>
+                <h5><em> -American Academy of Dermatology Association </em></h5>
+                </p>
+                {% endif %}
+                <a class="button1" href="/show">Change Skin Selection</a>
+                <a class="button1" href="/recommended"> Check out which products are best for you</a>
+                <hr>
+                
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <title>M + E Skincare </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="assets/dropdown/css/style.css">
+        <link rel="stylesheet" href="mystyle.css">
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+            <style>
+                .nav-items a {
+                    color: #18272F;
+                    position: relative;
+                    text-decoration: none;
+                }
+
+                .nav-items a::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 4px;
+                    border-radius: 4px;
+                    background-color: #18272F;
+                    bottom: 0;
+                    left: 0;
+                    transform-origin: right;
+                    transform: scaleX(0);
+                    transition: transform .3s ease-in-out;
+                }
+
+                .nav-items a:hover::before {
+                    transform-origin: left;
+                    transform: scaleX(1);
+                }
+            </style>
+            <!-- navbar -->
+            <div class="container d-flex justify-content-between pt-4">
+                <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg bg-white">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                        data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="hamburger">
+                            <img src="/static/imgs/menu.png" width="30" height="30">
+                        </div>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-dropdown nav-left" data-app-modern-menu="true">
+                            
+                            <li class="nav-items"><a class="nav-link link text-black display-4" href="/">
+                                    HOME</a></li>
+                            <li class="nav-items"><a class="nav-link link text-black display-4" href="#">ABOUT</a></li>
+                            <li class="nav-items"><a class="nav-link link text-black display-4" href="/all">PRODUCTS</a>
+                            </li>
+                            <li class="nav-items"><a class="nav-link link text-black display-4" href="#">CONTACT US</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <a class="navbar-brand pt-2">
+                    <img src="/static/imgs/logo2B.png" width="70" height="20" alt="m and e logo">
+                </a>
+                <hr>
+                <div class="right-side d-flex justify-content-end align-content-center">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="/dashboard"><img src="/static/imgs/profilehead.jpeg" width="50" height="50"
+                                    class="d-inline-block"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#"><img src="/static/imgs/shoppingbag.png" width="60" height="50"
+                                    class="d-inline-block"></a>
+                        </li>
+                        <li class="nav-item pt-2">
+                            <a class="nav-link link text-black display-4" href="/logout">LOGOUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% block content %}{% endblock %}
+        <!-- footer -->
+        <footer>
+            <p class="text-center text-muted pt-4"> ©2022 M + E SKINCARE</p>
+        </footer>
+        </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/smoothscroll/smooth-scroll.js"></script>
+        <script src="assets/ytplayer/index.js"></script>
+        <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+        <script src="assets/theme/js/script.js"></script>
+        <script src="assets/formoid.min.js"></script>
+
+    </body>
+
+</html>

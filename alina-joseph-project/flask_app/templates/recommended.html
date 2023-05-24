@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- main content top -->
+<style>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+
+    body {
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-font-feature-settings: "liga" on;
+    }
+
+    img {
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    .btn {
+        background-color: white;
+        border: 1px solid #cccccc;
+        color: #696969;
+        padding: 0.5rem;
+        text-transform: lowercase;
+    }
+
+    .btn--block {
+        display: block;
+        width: 100%;
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+    }
+
+    .cards__item {
+        display: flex;
+        padding: 1rem;
+    }
+
+    @media (min-width: 40rem) {
+        .cards__item {
+            width: 50%;
+        }
+    }
+
+
+
+    .card {
+        background-color: white;
+        border-radius: 0.25rem;
+        box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .card:hover .card__image {
+        filter: contrast(100%);
+    }
+
+    .card__content {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .card__image {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        filter: contrast(70%);
+        overflow: hidden;
+        position: relative;
+        transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+    }
+
+    .card__image::before {
+        content: "";
+        display: block;
+        padding-top: 56.25%;
+    }
+
+    @media (min-width: 40rem) {
+        .card__image::before {
+            padding-top: 66.6%;
+        }
+    }
+
+    .card__image--normal {
+        background-image: url(https://media.istockphoto.com/id/1324168970/vector/scrub-cosmetic-oil-clear-aloe-vera-gel-and-transparent-moisturizer-serum-drops-3d-realistic.jpg?s=612x612&w=0&k=20&c=hi18SqzOI8A9Zmq1t4rHI8aJ6iWEeZ-_KkOlfX_KC6Q=);
+    }
+
+    .card__image--combination {
+        background-image: url(https://media.istockphoto.com/id/999831540/photo/composition-of-various-cosmetic-creams.jpg?s=612x612&w=0&k=20&c=-vLpjdNYxNAiHbTotFAwETdh6BBZ4Lo2LDGiAF5boc4=);
+    }
+
+    .card__image--dry {
+        background-image: url(https://static-bebeautiful-in.unileverservices.com/arginine-in-skincare1.jpg);
+    }
+
+    .card__image--oily {
+        background-image: url(https://blogscdn.thehut.net/app/uploads/sites/1160/2018/04/040120-Featured-SkinCareLabels.jpg);
+    }
+
+    .card__title {
+        color: #696969;
+        font-size: 1.25rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .card__text {
+        flex: 1 1 auto;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
+    }
+
+    .viewall a{
+        color:  #95a4ff;
+    }
+</style>
+<div class="container ">
+    <div class="title d-flex align-items-center m-4">
+        <h2> Recommended products for {{selected.type}} skin: </h2>
+    </div>
+    <div class="container d-flex">
+        <ul class="cards">
+            {% if selected.type == "Oily" %}
+            <li class="cards__item">
+                <div class="card">
+                    <div class="card__image card__image--oily"></div>
+                    <div class="card__content">
+                        <div class="card__title">Oily</div>
+                        <p class="card__text">Oily skin happens when the sebaceous glands in the skin make too much
+                            sebum. Sebum is the waxy, oily substance that protects and hydrates the skin. See a
+                            dermatologist if oily skin is severe or home remedies do not work to improve symptoms. Sebum
+                            is vital for keeping the skin healthy. </p>
+                        <button class="btn btn--block card__btn">Select</button>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if selected.type == "Combination" %}
+            <li class="cards__item">
+                <div class="card">
+                    <div class="card__image card__image--combination"></div>
+                    <div class="card__content">
+                        <div class="card__title">Combination</div>
+                        <p class="card__text">Typically, the combination skin type is characterized by dry, flaking skin
+                            on the cheeks, while excessive oil and shine appears on other areas of the face. Those with
+                            combination skin are in a constant battle with their T-Zone, which includes the forehead,
+                            nose, and chin.</p>
+                        <button class="btn btn--block card__btn">Select</button>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if selected.type == "Dry" %}
+            <li class="cards__item">
+                <div class="card">
+                    <div class="card__image card__image--dry"></div>
+                    <div class="card__content">
+                        <div class="card__title">Dry </div>
+                        <p class="card__text">Dry facial skin may result from many factors. These include exposure to
+                            changing temperature or humidity levels, using harsh soaps, and skin conditions such as
+                            eczema. Most cases of dry, flaky skin on your face are mild and will clear up with time.
+                            However, dry patches can sometimes indicate something more serious.</p>
+                        <button class="btn btn--block card__btn">Select</button>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if selected.type == "Normal" %}
+            <li class="cards__item">
+                <div class="card">
+                    <div class="card__image card__image--normal"></div>
+                    <div class="card__content">
+                        <div class="card__title">Normal </div>
+                        <p class="card__text">Normal skin is balanced—feeling neither too dry nor too oily. It is not
+                            prone to breakouts, flakiness, or feeling greasy or tight. People with normal skin typically
+                            have pores that are small, a smooth skin texture, and are less prone to sensitivity or
+                            blemishes.</p>
+                        <button class="btn btn--block card__btn">Select</button>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+
+    </div>
+
+<div class="viewall d-flex gap-3 m-4">
+        <p> Want to see all products?</p> 
+        <a class="button1" href="/all">View products by concern </a>
+    </div> 
+</div>
+
+
+{% endblock %}

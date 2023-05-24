@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- main content top -->
+<style>
+    .words p {
+        font-size: 18px;
+    }
+
+    .words a {
+        display: block;
+        margin: 0 auto;
+        line-height: 28pt;
+        padding: 0 20px;
+        background: #ffffff;
+        letter-spacing: 2px;
+        transition: 0.2s all ease-in-out;
+        outline: none;
+        border: 1px solid black;
+        box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px black;
+    }
+
+    .words a :hover {
+        background: black;
+        color: white;
+        border: 1px solid black;
+    }
+
+    .main-top {
+        width: 100%;
+    }
+
+
+
+    
+</style>
+<script>
+
+</script>
+<!-- LOGIN FORM -->
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <h4> {{ message }}</h4>
+    </div>
+    {% endfor %}
+</div>
+<div class="main-top d-flex align-items-center justify-content-evenly pt-4;">
+    <div class="words text-center">
+        <hr>
+        <p> We know how hard it can be when you're searching <br> for the perfect skincare routine. <br>
+            Sign up now and create your own personal profile <br> that'll help you get the products you need
+            for the skin you have.</p>
+        <a href="/register" class="btn btn-outline-dark" onclick=""> Create Your Skin profile </a>
+        <hr>
+    </div>
+
+    <div class="photos">
+        <div class="img1">
+            <img src="/static/imgs/creams.jpeg" alt="creams" width="400" height="250" class="rounded">
+        </div>
+    </div>
+</div>
+<!-- main content row 2 -->
+
+<style>
+    .container2 {
+        display: flex;
+        width: 100%;
+        padding: 4% 2%;
+        box-sizing: border-box;
+        height: 100vh;
+        font-family: "Fjalla One";
+    }
+
+    .boxes {
+        flex: 1;
+        overflow: hidden;
+        transition: .5s;
+        margin: 0 2%;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, .1);
+        line-height: 0;
+    }
+
+    .boxes>img {
+        width: 200%;
+        height: calc(100% - 10vh);
+        object-fit: cover;
+        transition: .5s;
+    }
+
+    .boxes>span {
+        font-size: 3.8vh;
+        display: block;
+        text-align: center;
+        height: 10vh;
+        line-height: 2.6;
+    }
+
+    .boxes:hover {
+        flex: 1 1 50%;
+    }
+
+    .boxes:hover>img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="main2 ">
+    <div class="container2">
+        <div class="boxes">
+            <img src="/static/imgs/bottles-flowers.jpeg">
+            <span>Smooth </span>
+        </div>
+        <div class="boxes">
+            <img src="/static/imgs/applyingcream.jpeg">
+            <span> Hydrate </span>
+        </div>
+        <div class="boxes">
+            <img src="/static/imgs/creams2.jpeg">
+            <span> Glow </span>
+        </div>
+        <div class="boxes">
+            <img src="/static/imgs/cream-dollup.jpg">
+            <span> Protect </span>
+        </div>
+    </div>
+</div>
+<!-- bottom content login  -->
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .login {
+        width: min-content;
+        background: #ffffff;
+        padding: 50px 100px;
+        border: 2px solid black;
+        box-shadow: 15px 15px 1px #95a4ff, 15px 15px 1px 2px black;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        font-size: 14pt;
+        line-height: 28pt;
+        font-family: "Fjalla One";
+        margin-bottom: 28pt;
+        border: none;
+        border-bottom: 5px solid black;
+        background: #ffffff;
+        min-width: 250px;
+        padding-left: 5px;
+        outline: none;
+        color: black;
+    }
+
+    input:focus {
+        border-bottom: 5px solid #95a4ff;
+    }
+
+    button {
+        display: block;
+        margin: 0 auto;
+        line-height: 28pt;
+        padding: 0 20px;
+        background: #ffffff;
+        letter-spacing: 2px;
+        transition: 0.2s all ease-in-out;
+        outline: none;
+        border: 1px solid black;
+        box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px black;
+    }
+
+    button:hover {
+        background: black;
+        color: white;
+        border: 1px solid black;
+    }
+
+
+    ::selection {
+        background: #ffc8ff;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        border-bottom: 5px solid #95a4ff;
+        -webkit-text-fill-color: #2A293E;
+        -webkit-box-shadow: 0 0 0px 1000px #f8f8e5f7 inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+</style>
+
+<script>
+</script>
+<div class="bottom-container d-flex justify-content-evenly text-center gap-4">
+    <div class="login" id="login">
+        <form action="/login" method="post">
+            {% with errors = get_flashed_messages(category_filter=['login']) %}
+            {% if errors %}
+            <div class="alert alert-danger" id="error">
+                <h5>Oops! Looks like you made a mistake:</h5>
+                <ul class="list-unstyled">
+                    {% for error_message in errors %}
+                    <li>{{ error_message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %} {% endwith %}
+            <h4> Already a member? </h4>
+            <input name="email" placeholder="Email" type="email" /><input name="password" placeholder="Password"
+                type="password" /><button type="submit">LOGIN</button>
+        </form>
+    </div>
+
+    <div clas="bottom-right ">
+        <img src="/static/imgs/recycling-circle-image.jpeg" width="150" height="150">
+        <p> Our packaging is made from recycled materials and is recycling friendly,<br> so when you're done just toss
+            it in the recycling bin <br> or take to your nearest recycling center.
+            <br>Let's make the world a better place <em>together</em>.
+        </p>
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}
