@@ -33,7 +33,7 @@ class Concern:
 
     @classmethod
     def get_concern_with_user(cls, data):
-        query = "SELECT * FROM concerns LEFT JOIN users ON concerns.user_id = users.id WHERE concerns.id = %(id)s;"
+        query = "SELECT * FROM concerns LEFT JOIN users ON concerns.user_id = users.id WHERE users.id = %(id)s;"
         results = connectToMySQL(cls.DB).query_db( query,data )
         concern = cls( results[0] )
         
